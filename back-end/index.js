@@ -6,6 +6,15 @@ require('dotenv').config();
 
 const app = express();
 
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,            //access-control-allow-credentials:true
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
+
 app.use(express.json());
 
 //CONEXION A BASE DE DATOS
@@ -26,8 +35,6 @@ database.once('connected',()=>{
 const routes=require('./routes/routes');
 app.use('/api',routes);
 
-app.listen(3000,()=> {
-    console.log('Server funcionando en puerto 3000')
-})
+app.listen(process.env.PORT || 5000)
 
 
