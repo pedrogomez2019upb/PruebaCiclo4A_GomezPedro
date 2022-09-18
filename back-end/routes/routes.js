@@ -19,7 +19,7 @@ router.get('/get',async (req,res)=>{
 })
 
 //get by id
-router.get('/getOne/:id', async (req,res)=>{
+router.get('/get/:id', async (req,res)=>{
     try{
         const data= await Model.findById(req.params.id);
         res.json(data);
